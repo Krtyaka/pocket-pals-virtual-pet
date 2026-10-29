@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Pocket Pals</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="pet.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- #stage is a 3-row grid: HUD / arena (pet world) / bottom (caption, tray, dock). Rows can never overlap. -->
+    <div id="stage">
+      <div class="xpline"><b id="xp"></b></div>
+      <header class="hud">
+        <span class="mark">pocket pals</span>
+        <button
+          class="snd"
+          id="bSnd"
+          aria-label="Sound on or off"
+          aria-pressed="true"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M4 9v6h4l5 4V5L8 9z" />
+            <path class="w" d="M16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11" />
+            <path class="x" d="M17 9l5 6M22 9l-5 6" />
+          </svg>
+        </button>
+        <span class="stat"><b id="coins">0</b> coins</span
+        ><span class="stat">level <b id="lvl">1</b></span>
+      </header>
+
+      <main class="arena">
+        <div class="tubes" aria-label="Pet vitals">
+          <div class="vt">
+            <div class="tube" id="b0"><i></i></div>
+            <b class="num" id="n0"></b><span>belly</span>
+          </div>
+          <div class="vt">
+            <div class="tube" id="b1"><i></i></div>
+            <b class="num" id="n1"></b><span>joy</span>
+          </div>
+          <div class="vt">
+            <div class="tube" id="b2"><i></i></div>
+            <b class="num" id="n2"></b><span>energy</span>
+          </div>
+        </div>
+        <i class="ground"></i>
+        <div id="name"></div>
+        <div class="ask"><span id="askT"></span></div>
+        <div
+          id="pet"
+          tabindex="0"
+          role="button"
+          aria-label="Pet your companion"
+        >
+          <i class="disc"></i><i class="sh"></i>
+          <div class="pf"><div class="pa"></div></div>
+        </div>
+        <svg id="bowl" class="bowl" viewBox="0 0 100 70" aria-hidden="true">
+          <ellipse
+            class="food"
+            cx="50"
+            cy="30"
+            rx="30"
+            ry="16"
+            fill="#a5612f"
+          />
+          <path d="M8 28Q50 40 92 28L82 62Q50 72 18 62Z" fill="#ff7a5c" />
+          <path
+            d="M8 28Q50 40 92 28"
+            fill="none"
+            stroke="#ffb199"
+            stroke-width="4"
+          />
+        </svg>
+        <div class="toys" id="toys"><b>★</b><b>✦</b><b>★</b><u></u></div>
+        <div class="ring" id="ring"></div>
+        <div id="field"></div>
+        <div id="score" hidden></div>
+        <div id="fx"></div>
+      </main>
+
+      <footer class="bottom">
+        <div class="caption">
+          <div id="status" aria-live="polite"></div>
+          <ul id="log"></ul>
+        </div>
+        <div class="tray" id="tray"></div>
+        <nav class="dock">
+          <button id="bFeed" aria-label="Feed">
+            <i
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M4 11h16a8 8 0 0 1-16 0zM8 7c0-2 2-2 2-4M14 7c0-2 2-2 2-4"
+                /></svg></i
+            ><span>Feed</span>
+          </button>
+          <button id="bPlay" aria-label="Play">
+            <i
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.3L12 17.2 6.4 20.2l1.2-6.3L3 9.6l6.3-.8z"
+                /></svg></i
+            ><span>Play</span>
+          </button>
+          <button id="bSleep" aria-label="Sleep or wake">
+            <i
+              ><svg viewBox="0 0 24 24">
+                <path
+                  d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"
+                /></svg></i
+            ><span>Sleep</span>
+          </button>
+          <button id="bDeck" aria-expanded="false" aria-controls="deck">
+            <i
+              ><svg viewBox="0 0 24 24">
+                <path d="M4 7h16M4 12h16M4 17h10" /></svg></i
+            ><span>Collection</span>
+          </button>
+        </nav>
+      </footer>
+    </div>
+
+    <aside class="deck" id="deck" aria-label="Collection">
+      <div class="dh">
+        <h1>Collection</h1>
+        <button id="bClose">Close</button>
+      </div>
+      <h2>Companions</h2>
+      <div id="pets"></div>
+      <h2>Name your pal</h2>
+      <div class="namebox">
+        <input
+          id="nameIn"
+          maxlength="12"
+          autocomplete="off"
+          aria-label="Pet name"
+        /><button id="nameSave">Save</button>
+      </div>
+      <button class="cardbtn" id="bCard">Make a pet card</button>
+      <h2>Wardrobe <small>worn by the active pet</small></h2>
+      <div id="acc"></div>
+      <h2>Goals</h2>
+      <div id="quests"></div>
+      <button class="reset" id="reset">Start over</button>
+    </aside>
+
+    <!-- pet card preview (opened from the Collection) -->
+    <div id="card" hidden role="dialog" aria-label="Your pet card">
+      <div class="cbox">
+        <img id="cardImg" alt="Your pet card" />
+        <div class="cbtns">
+          <button id="cardDl">Download</button><button id="cardSh">Share</button
+          ><button id="cardX">Close</button>
+        </div>
+      </div>
+    </div>
+    <script src="pets.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
