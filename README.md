@@ -4,6 +4,12 @@
 
 Care for your virtual companion, play mini-games, earn rewards, unlock new friends, and customise your pet — all in a lively interface powered by vanilla web technologies.
 
+## 🌐 Live Demo
+
+🐾 **Try Pocket Pals here:** [Play Pocket Pals](https://krtyaka.github.io/pocket-pals-virtual-pet/)
+
+Explore your virtual pet, play mini-games, earn coins and XP, unlock new pets and accessories, and keep your pet happy!
+
 ## ✨ Features
 
 ### 🐱 Virtual pet care
