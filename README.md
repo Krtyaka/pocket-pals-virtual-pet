@@ -88,20 +88,10 @@ We'd love to keep evolving Pocket Pals with:
 - More achievements and progression mechanics
 - Further accessibility, mobile, and performance refinements
 
-## 👥 Team
+## Final Note
 
-**Stack Storm** — four-member team at SAVISKAR 2026.
+Pocket Pals started as a two-hour hackathon challenge at **SAVISKAR 2026** and became an opportunity to experiment with creative UI design, interactive animations, and game mechanics using vanilla web technologies.
 
-_Add teammate names and profile links here if everyone is happy to be credited._
+Securing **3rd place with Team Stack Storm** made the experience even more memorable. We're excited to keep building, experimenting, and making Pocket Pals better with every iteration.
 
-## 📸 Screenshots
-
-Add screenshots or a short GIF of the running project here. For example, create a `screenshots/` folder and add images, then embed them like this:
-
-```md
-![Pocket Pals gameplay](screenshots/pocket-pals-home.png)
-```
-
-## 📄 License
-
-No license has been specified yet. If you want others to reuse or modify the code, choose and add an appropriate open-source license before publishing.
+**Made with ❤️, creativity, and a little virtual-pet magic.** 🐾
